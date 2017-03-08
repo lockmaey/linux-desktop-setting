@@ -1,0 +1,52 @@
+alignment bottom_left
+background yes
+border_width 1
+cpu_avg_samples 2
+default_color cornflowerblue
+default_outline_color white
+default_shade_color white
+double_buffer yes
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+gap_x 10
+gap_y 10 
+maximum_width 130
+max_port_monitor_connections 64
+max_specials 512
+max_user_text 16384
+minimum_size 330 10
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+wm_class_name Conky
+own_window_colour black
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_transparent yes
+own_window_type override
+own_window yes
+stippled_borders 2
+update_interval 2
+uppercase no
+use_spacer yes
+use_xft yes
+xftalpha 0.8
+xftfont  Bitstream Vera Sans Mono:size=9
+
+TEXT
+${color5}${font Sans:normal:size=9}CALENDAR ${hr 2}${color darkgrey}$font
+
+${execpi 900 ncal -bh -m `date +%m` -A-1 -B1 | sed ':a;N;$!ba;s/\n/\n/g'}
+    ${color3}${time %b %Y}${color darkgrey}
+${if_match "${time %a}" == "Sun"}${color3}Su${color darkgrey} Mo Tu We Th Fr Sa${else}\
+${if_match "${time %a}" == "Mon"}Su ${color3}Mo${color darkgrey} Tu We Th Fr Sa${else}\
+${if_match "${time %a}" == "Tue"}Su Mo ${color3}Tu${color darkgrey} We Th Fr Sa${else}\
+${if_match "${time %a}" == "Wed"}Su Mo Tu ${color3}We${color darkgrey} Th Fr Sa${else}\
+${if_match "${time %a}" == "Thu"}Su Mo Tu We ${color3}Th${color darkgrey} Fr Sa${else}\
+${if_match "${time %a}" == "Fri"}Su Mo Tu We Th ${color3}Fr${color darkgrey} Sa${else}\
+Su Mo Tu We Th Fr ${color3}Sa${color darkgrey}${endif}${endif}${endif}${endif}${endif}${endif}
+${execpi 900 LAR=`date +%-d`; ncal -bh | sed '2d' | sed -e '1d' -e 's/\<'$LAR'\>/${color3}&${color darkgrey}/' | sed ':a;N;$!ba;s/\n/\n/g'}${color darkgrey}
+${execpi 900 ncal -bh -m `date +%m` -A1 -B-1 | sed ':a;N;$!ba;s/\n/\n/g'}
+${color5}${hr 2}${color darkgrey
+

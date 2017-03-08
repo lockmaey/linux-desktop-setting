@@ -1,0 +1,45 @@
+alignment top_right
+background yes
+border_width 1
+cpu_avg_samples 2
+default_color cornflowerblue
+default_outline_color white
+default_shade_color white
+double_buffer yes
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+gap_x 10
+gap_y 15 
+maximum_width 330
+max_port_monitor_connections 64
+max_specials 512
+max_user_text 16384
+minimum_size 330 10
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+wm_class_name Conky
+own_window_colour black
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_transparent yes
+own_window_type override
+own_window yes
+stippled_borders 2
+update_interval 2
+uppercase no
+use_spacer yes
+use_xft yes
+xftalpha 0.8
+xftfont  Bitstream Vera Sans Mono:size=9
+
+
+TEXT
+${color #FCD97B}${font Sans:normal:size=9}SYSTEM $color${color5}${hr 2}$color$font
+OS:${alignr} $distribution
+Kernel:${alignr} $sysname $kernel $machine
+Hostname:${alignr} $nodename
+Conky:${alignr} $conky_version
+Uptime:${alignr} $uptime
+Entropy:${alignr} ${entropy_perc}%

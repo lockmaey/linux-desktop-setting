@@ -1,0 +1,65 @@
+alignment top_right
+background yes
+border_width 1
+cpu_avg_samples 2
+default_color cornflowerblue
+default_outline_color white
+default_shade_color white
+double_buffer yes
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+gap_x 10
+gap_y 650 
+maximum_width 330
+max_port_monitor_connections 64
+max_specials 512
+max_user_text 16384
+minimum_size 330 10
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+wm_class_name Conky
+own_window_colour black
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_transparent yes
+own_window_type override
+own_window yes
+stippled_borders 2
+update_interval 2
+uppercase no
+use_spacer yes
+use_xft yes
+xftalpha 0.8
+xftfont  Bitstream Vera Sans Mono:size=9
+
+TEXT
+${color5}${font Sans:normal:size=9}NETWORK ${hr 2}$color$font
+ISP: ${alignr} ${execi 6000 curl ipinfo.io/org}
+#Locale: ${alignr} ${execi 6000 curl ipinfo.io/city}, ${execi 6000 curl ipinfo.io/region}, ${execi 6000 curl ipinfo.io/country}
+#${alignr} ${execi 6000 curl ipinfo.io/loc}
+Local IP: ${alignr} ${addr wlp3s0}
+Public IP: ${alignr} ${execi 600 wget http://ipinfo.io/ip -qO -}
+WLAN SSID: ${alignr} ${if_existing /sys/class/net/wlp3s0/operstate up}${color green}${exec iwgetid -r}${else}${color red}DISCONNECTED${endif}$color
+LAN: ${alignr} ${if_existing /sys/class/net/enp4s0/operstate up}${color green}CONNECTED${else}${color red}DISCONNECTED${endif}$color
+Ping: ${alignr} ${execi 3000 ping www.google.com -c 1 | grep time= | rev | cut -c -6 | rev}
+
+Down: $color${downspeed wlp3s0} k/s ${alignr}Up: ${upspeed wlp3s0} k/s
+${downspeedgraph wlp3s0 25,140 000000 ff0000} ${alignr}${upspeedgraph wlp3s0 25,140 000000 00ff00}$color
+Total: ${totaldown wlp3s0} ${alignr}Total: ${totalup wlp3s0}
+Inbound: ${tcp_portmon 1 32767 count} 
+${color #0077ff}Inbound Connection ${alignr} Local Service/Port$color
+ ${tcp_portmon 1 32767 rhost 0} ${alignr} ${tcp_portmon 1 32767 lservice 0}
+ ${tcp_portmon 1 32767 rhost 1} ${alignr} ${tcp_portmon 1 32767 lservice 1}
+ ${tcp_portmon 1 32767 rhost 2} ${alignr} ${tcp_portmon 1 32767 lservice 2}
+ ${tcp_portmon 1 32767 rhost 3} ${alignr} ${tcp_portmon 1 32767 lservice 3}
+ ${tcp_portmon 1 32767 rhost 4} ${alignr} ${tcp_portmon 1 32767 lservice 4}
+Outbound: ${tcp_portmon 32768 61000 count}
+${color #0077ff}Outbound Connection ${alignr} Remote Service/Port$color
+ ${tcp_portmon 32768 61000 rhost 0} ${alignr} ${tcp_portmon 32768 61000 rservice 0}
+ ${tcp_portmon 32768 61000 rhost 1} ${alignr} ${tcp_portmon 32768 61000 rservice 1}
+ ${tcp_portmon 32768 61000 rhost 2} ${alignr} ${tcp_portmon 32768 61000 rservice 2}
+ ${tcp_portmon 32768 61000 rhost 3} ${alignr} ${tcp_portmon 32768 61000 rservice 3}
+ ${tcp_portmon 32768 61000 rhost 4} ${alignr} ${tcp_portmon 32768 61000 rservice 4}
+${alignr}Total: ${tcp_portmon 1 65535 count}
