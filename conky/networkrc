@@ -11,7 +11,7 @@ draw_graph_borders yes
 draw_outline no
 draw_shades no
 gap_x 10
-gap_y 650 
+gap_y 635 
 maximum_width 330
 max_port_monitor_connections 64
 max_specials 512
@@ -35,7 +35,7 @@ xftalpha 0.8
 xftfont  Bitstream Vera Sans Mono:size=9
 
 TEXT
-${color5}${font Sans:normal:size=9}NETWORK ${hr 2}$color$font
+${color #FCD97B}${font Sans:normal:size=9}NETWORK $color${color5}${hr 2}$color$font
 ISP: ${alignr} ${execi 6000 curl ipinfo.io/org}
 #Locale: ${alignr} ${execi 6000 curl ipinfo.io/city}, ${execi 6000 curl ipinfo.io/region}, ${execi 6000 curl ipinfo.io/country}
 #${alignr} ${execi 6000 curl ipinfo.io/loc}

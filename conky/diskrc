@@ -11,7 +11,7 @@ draw_graph_borders yes
 draw_outline no
 draw_shades no
 gap_x 10
-gap_y 573
+gap_y 555
 maximum_width 330
 max_port_monitor_connections 64
 max_specials 512
@@ -35,7 +35,7 @@ xftalpha 0.8
 xftfont  Bitstream Vera Sans Mono:size=9
 
 TEXT
-${color5}${font Sans:normal:size=9}DRIVES ${hr 2}$color$font 
+${color #FCD97B}${font Sans:normal:size=9}DRIVES $color${color5}${hr 2}$color$font 
 (/) : ${fs_used /}/${fs_size /}
 ${fs_free_perc /}% ${color FFFF33} ${fs_bar 6 /}$color
 (/home) : ${fs_used /home}/${fs_size /home}
